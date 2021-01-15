@@ -32,3 +32,5 @@ console.log(typeof e);
 let f = 123456789123456789123456789n;
 console.log(f);
 console.log(typeof f);
+
+// To use a variable in a phrase, use ${var_name}
