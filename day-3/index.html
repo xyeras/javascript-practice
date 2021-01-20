@@ -59,8 +59,11 @@
         // Alert the user's birthday
 
         let birthdate = prompt("Please enter your birthdate", "");
-        confirm("Is " + birthdate + " correct?");
-        alert(birthdate);
+        if (confirm("Is " + birthdate + " correct?")) {
+            alert(birthdate);
+        } else {
+            alert("You pressed Cancel!");
+        }
 
 
     </script>
