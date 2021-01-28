@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Daily Challenge
+        
+        function evenOrOdd(num) {
+            if (num % 2 === 0) {
+                alert("The number is even.");
+                return num;
+            } else if (num % 2 === 1) {
+                alert("The number is odd.");
+                return num;
+            } else {
+                alert("The input is not a number.");
+            }
+        }
+
+        const user1 = prompt("Please input a number.", "");
+        evenOrOdd(user1);
+
+        // Take-home Challenge
+
+        function passwordValidation(pass) {
+            // Note: pass.substring(0,1) outputs the first character of the string
+            // The third condition within the if statement checks if the number is a letter
+            // ( isNaN(pass.substring(0,1) == True )
+            if ( (pass.length > 5) && (pass.length < 21) && ( (pass.substring(0,1) % 1) != 0) ) {
+                alert("The password is valid.")
+            } else {
+                alert("The password is invalid as it does not follow all the requirements.")
+            }
+        }
+
+        const user2 = prompt("Please enter a password that is 6-20 characters long and starts with a letter.","");
+        passwordValidation(user2);
+
+    </script>
+</body>
+</html>
