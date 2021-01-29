@@ -29,8 +29,9 @@
         function passwordValidation(pass) {
             // Note: pass.substring(0,1) outputs the first character of the string
             // The third condition within the if statement checks if the number is a letter
-            // ( isNaN(pass.substring(0,1) == True )
-            if ( (pass.length > 5) && (pass.length < 21) && ( (pass.substring(0,1) % 1) != 0) ) {
+            // isNaN(pass.substring(0,1)) == True <-- This line of code is broken when trying to run this on live server
+            // (pass.substring(0,1) % 1) != 0) <-- This thing works checks if the first character in password is not a number
+            if ( (pass.length > 5) && (pass.length < 21) && ( ( pass.substring(0,1) % 1 ) != 0 ) ) {
                 alert("The password is valid.")
             } else {
                 alert("The password is invalid as it does not follow all the requirements.")
