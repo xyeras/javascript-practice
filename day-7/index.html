@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // Daily Challenge
+        
+        // while loop version
+        let num = 1;
+        while(num < 101) {
+            if (num % 3 === 0 && num % 5 == 0) {
+                console.log(num, "FizzBuzz");
+            }
+            else if (num % 3 === 0 && num % 5 != 0) {
+                console.log(num, "Fizz");
+            }
+            else if (num % 5 === 0 && num % 3 != 0) {
+                console.log(num, "Buzz");
+            }
+            else {
+                console.log(num, "N/A");
+            }
+            num++;
+        }
+
+        // for loop version
+        for(let i = 0; i < 101; i++) {
+            if (i % 3 === 0 && i % 5 == 0) {
+                console.log(i, "FizzBuzz");
+            }
+            else if (i % 3 === 0 && i % 5 != 0) {
+                console.log(i, "Fizz");
+            }
+            else if (i % 5 === 0 && i % 3 != 0) {
+                console.log(i, "Buzz");
+            }
+            else {
+                console.log(i, "N/A");
+            }
+        }
+
+
+
+        // Take-home Challenge
+
+            // How to build an element
+            const button = document.createElement('button'); // You create the button element
+            document.body.appendChild(button); // This places the button within the body of the document so that you can see the button
+
+            // How to put text inside an element;
+            button.innerHTML = 'Get a random cat fact'; // Puts the text inside of the button
+
+            // How to add a listener to an element;
+            button.addEventListener('click', getRandCatFact); // When you click on the button, the function will execute
+
+            //  How to build a function
+            function getRandCatFact() {
+                fetch('https://cat-fact.herokuapp.com/' + 'facts')
+                .then(function(data) {
+                    console.log(data);
+                    return data.json()
+                })
+                .then(function(data) {
+                    console.log(data);
+                    const div = document.createElement('pre');
+                    document.body.appendChild(div);
+                    console.log(data.length);
+                    const randNum = Math.floor(Math.random() * 5); // Covers from 0-4 for the five objects
+                    div.innerHTML = JSON.stringify(data[randNum].text, null, 4);
+                });
+            }
+
+    </script>
+
+</body>
+</html>

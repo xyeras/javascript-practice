@@ -6,39 +6,64 @@
     <title>Document</title>
 </head>
 <body>
+
     <script>
+
+        // Note: I hope this makes sense. This topic is still kind of eludes me.
+        // Once I have a better understanding, I will update the comments here again
+
+        // Daily Challenge
+
+        // Note: Make sure when you run this file to comment out at least one of two examples.
+        // It runs an error since promise was already initialized.
+
         // ========================= EXAMPLE 1 =========================
-        function job() {
-            return new Promise(function(resolve, reject) {
-                reject();
-            });
-        }
+        
+        // This is commented out since this stuff is considered fluff
+        // function job() {
+        //     return new Promise(function(resolve, reject) {
+        //         reject();
+        //     });
+        // }
 
-        let promise = job();
+        // let promise = job();
 
-        promise
+        // START FROM HERE FOR EXAMPLE 1
 
-        .then(function() {
-            console.log('Success 1');
-        })
+        // let promise = new Promise(function(resolve, reject) {
+        //     reject(); // automatically calls reject
+                        // since a reject was called it skips the then statements till the catch function
+                        // then it continues as normal
+        // });
 
-        .then(function() {
-            console.log('Success 2');
-        })
+        // promise
 
-        .then(function() {
-            console.log('Success 3');
-        })
+        // .then(function() {
+        //     console.log('Success 1');
+        // })
 
-        .catch(function() {
-            console.log('Error 1');
-        })
+        // .then(function() {
+        //     console.log('Success 2');
+        // })
 
-        .then(function() {
-            console.log('Success 4');
-        });
+        // .then(function() {
+        //     console.log('Success 3');
+        // })
+
+        // .catch(function() {          // this should be printed as the first thing as there was a reject
+        //     console.log('Error 1');
+        // })
+
+        // .then(function() {           // this should printed as the second thing since
+        //     console.log('Success 4');
+        // });
+
+        // Error 1
+        // Success 4
+        // Primoise {<fulfilled>: undefined}
 
         // ========================= EXAMPLE 2 =========================
+       
         function job(state) {
             return new Promise(function(resolve, reject) {
                 if (state) {
@@ -49,20 +74,23 @@
             });
         }
 
-        let promise = job(true);
+        let promise = job(true); // the function "job" is called with true as its input "state"
+                                    // should return "success" since state is true
 
         promise
 
-        .then(function(data) {
+        .then(function(data) { // goes here since true was passed in line 73
             console.log(data);
 
-            return job(false);
+            return job(false); // function is called with its state as false
+                                // should return "error"
         })
 
-        .catch(function(error) {
+        .catch(function(error) { // function is called with error
             console.log(error);
 
-            return 'Error caught';
+            return 'Error caught'; // should return "Error caught" as the last thing in the console
+                                    // I'm assuming the rest of the lines do not execute since error was called
         })
 
         .then(function(data) {
@@ -74,6 +102,37 @@
         .catch(function(error) {
             console.log(error);
         });
+    
+        // success
+        // error
+        // Error caught
+
     </script>
+
+    <!-- Take-home Challenge -->
+
+    <script>
+
+        // var text = '{ "name":"John", "birth":"1986-12-14", "city":"New York"}';
+        // var obj = JSON.parse(text);
+        // obj.birth = new Date(obj.birth);
+
+        // document.getElementById("demo").innerHTML = obj.name + ", " + obj.birth;
+
+    
+        fetch('https://cat-fact.herokuapp.com/facts')
+        .then(function(data) {
+            console.log(data);
+            return data.json()
+        })
+        .then(function(data) {
+            console.log(data);
+            let text = JSON.stringify(data);
+            let obj = JSON.parse(text);
+            alert(obj);
+        })
+
+    </script>
+
 </body>
 </html>
