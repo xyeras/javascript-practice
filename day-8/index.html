@@ -9,11 +9,93 @@
     <script>
         // Daily Challenge
 
+        // My first attempt though I had no idea what I was doing
+        const Dog = function(name, breed, gender) {
+            this.name = name;
+            this.breed = breed;
+            this.gender = gender;
+        };
+
+        let dog1 = new Dog('Viola', "Poodle and Terrier Mix", "Female");
+        let dog2 = new Dog('Lucky', "Unknown", "Male");
+
+        console.log(dog1);
+        console.log(dog2);
+
+        // My second attempt after better understanding
+        const cat = {
+            name: "Madame",
+            color: "black",
+            furLength: "long",
+            speak: function() {
+                console.log("meow");
+                const div = document.createElement('div');
+                document.body.appendChild(div);
+                div.innerHTML = "meow";
+            },
+            sit: function () {
+                console.log('Madame sits', this);
+                const div = document.body.appendChild(div);
+                div.innerHTML = this.name + ' sits'
+            }
+        }
+
+        class Cat {
+           name = 'spot';
+           color = 'white and black';
+           furLength = 'long';
+
+            constructor(name,color,furLength) {
+                console.log('a new cat was made', name, this.name);
+                this.name = name;
+                this.color = color;
+                this.furLength = furLength;
+            }
+
+           sit() {
+            console.log('this', this);
+               const div = document.createElement('div');
+               document.body.appendChild(div);
+               div.innerHTML = this.name + ' sits';
+           }
+           speak() {
+               console.log('meow');
+               const div = document.createElement('div');
+               document.body.appendChild(div);
+               div.innerHTML = 'meow';
+           };
+       }
+
+       const cat1 = new Cat("Pepper", "black", "short");
+       const cat2 = new Cat("Mint", "white", "short");
+
+       console.log(cat1);
+       console.log(cat2);
 
         // Take-home Challenge
 
+       class Car {
+           color = "_";
+           brand = "_";
+           model = "_";
+           year = 0;
 
-        
+           constructor(color, brand, model, year) {
+               this.color = color;
+               this.brand = brand;
+               this.model = model;
+               this.year = year;
+               console.log(this.color + " " + this.year + " " + this.brand + " " + this.model);
+           }
+       }
+
+       car1 = new Car("blue", "Nissan", "Versa", 2015);
+       car2 = new Car("white", "Toyota", "Corolla", 2012);
+       car3 = new Car("black", "Honda", "Civic", 2018);
+       car4 = new Car("orange", "Kia", "Soul Mars", 2020);
+
+       console.log(car1, car2, car3, car4);
+
     </script>
 </body>
 </html>
